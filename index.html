@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+
+    <!-- 🔥 IMPORTANT (fixes layout scaling + centering) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Student Chatbot</title>
+
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
-<!-- Main Wrapper (NEW - important for centering) -->
 <div class="wrapper">
     <div class="container">
         <h1>🤖 Student AI Chatbot</h1>
@@ -14,7 +19,13 @@
         <div id="chatbox"></div>
 
         <div id="inputArea">
-            <input type="text" id="userInput" placeholder="Ask anything..." onkeypress="handleKey(event)">
+            <input 
+                type="text" 
+                id="userInput" 
+                placeholder="Ask anything..." 
+                onkeypress="handleKey(event)"
+                autocomplete="off"
+            >
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
@@ -47,7 +58,7 @@ async function sendMessage() {
         chatbox.scrollTop = chatbox.scrollHeight;
 
     } catch (error) {
-        chatbox.innerHTML += `<div class="message bot">Error connecting to server</div>`;
+        chatbox.innerHTML += `<div class="message bot">Server error</div>`;
     }
 
     inputField.value = "";
